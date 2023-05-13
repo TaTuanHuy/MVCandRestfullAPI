@@ -1,0 +1,76 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Mã người dùng</th>
+      <th scope="col">Tên người dùng</th>
+      <th scope="col">SĐT</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Tuổi</th>
+      <th scope="col">Giới tính</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+          <td>{{this.userId}}</td>
+          <td>{{this.full_name}}</td>
+          <td>{{this.phone}}</td>
+          <td>{{this.address}}</td>
+          <td>{{this.age}}</td>
+          <td>{{this.sex}}</td>
+          <td>
+            <a href="http://localhost:8000/user/profile/{{this.userId}}" class="btn btn-warning">Sửa</a>
+            <a href="" class="btn btn-danger" data-toggle="modal" data-target="#deleteUser" data-id="{{this.userId}}">Xóa</a> 
+          </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+{{!-- Confirm delete Course --}}
+<div id="deleteUser" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có chắc chắn muốn xóa người dùng này hay không?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-danger btn-delete-user">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-user-form" method="POST">
+</form>
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    let userId  = 0;
+    let deleteForm = document.forms['delete-user-form'];
+    $('#deleteUser').on('show.bs.modal', function (event) {
+    const button = $(event.relatedTarget) // Button that triggered the modal
+    userId = button.data('id') // Extract info from data-* attributes
+  })
+
+  let btnDeleteUser = document.querySelector('.btn-delete-user')
+  
+  btnDeleteUser.onclick = () => {
+    deleteForm.action = '/user/' + userId + '?_method=DELETE'
+    deleteForm.submit()
+  }
+
+})
+</script>

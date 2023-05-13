@@ -1,0 +1,63 @@
+<style>
+    .close{
+        display : none
+    }
+</style>
+<form action="/user/{{rows.userId}}?_method=PUT" method="POST">
+  <div class="form-group row">
+    <label for="userId" class="col-sm-2 col-form-label">Mã người dùng</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" value="{{rows.userId}}" id="userId" name="userId">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="full_name" class="col-sm-2 col-form-label">Tên người dùng</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" value="{{rows.full_name}}" id="full_name" name="full_name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="phone" class="col-sm-2 col-form-label">Số điện thoại</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" value="{{rows.phone}}" id="phone" name="phone">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="address" class="col-sm-2 col-form-label">Địa chỉ</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" value="{{rows.address}}" id="address" name="address">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="age" class="col-sm-2 col-form-label">Tuổi</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" value="{{rows.age}}" id="age" name="age">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="age" class="col-sm-2 col-form-label">Chọn giới tính</label>
+    <div class="col-sm-10 choice">
+        <select name="sex" class="form-control selected">
+            <option selected class ="option">{{rows.sex}}</option>
+            <option value = "Nam">Nam</option>
+            <option value = "Nữ">Nữ</option>
+            <option value = "Khác">Khác</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Sửa</button>
+    </div>
+  </div>
+</form>
+
+<script>
+    const selected = document.querySelector('.choice')
+    const showOption = document.querySelector('.option')
+    selected.onclick = (e) => {
+        showOption.classList.add('close')
+    }
+
+
+</script>
