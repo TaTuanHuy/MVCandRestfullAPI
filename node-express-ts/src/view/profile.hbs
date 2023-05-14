@@ -38,10 +38,9 @@
     <label for="age" class="col-sm-2 col-form-label">Chọn giới tính</label>
     <div class="col-sm-10 choice">
         <select name="sex" class="form-control selected">
-            <option selected class ="option">{{rows.sex}}</option>
-            <option value = "Nam">Nam</option>
-            <option value = "Nữ">Nữ</option>
-            <option value = "Khác">Khác</option>
+            <option class="option" value = "Nam">Nam</option>
+            <option class="option" value = "Nữ">Nữ</option>
+            <option class="option" value = "Khác">Khác</option>
         </select>
     </div>
   </div>
@@ -53,10 +52,14 @@
 </form>
 
 <script>
-    const selected = document.querySelector('.choice')
-    const showOption = document.querySelector('.option')
-    selected.onclick = (e) => {
-        showOption.classList.add('close')
+  const test = `${{{rows.sex}}}`
+  console.log(test)
+    const option = document.querySelectorAll('.option')
+    for(let i = 0; i < option.length; i++){
+      if('$'+option[i].value === test){
+        option[i].selected = true
+        break;
+      }
     }
 
 
