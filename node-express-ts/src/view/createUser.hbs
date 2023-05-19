@@ -67,13 +67,13 @@
     }
  }
 
- const userId = new Validate('userId','',3, 16, /[A-Za-z0-9]|\s/g , 'Mã người dùng có thể bao gồm cả chữ cả số và chữ hoa')
+ const userId = new Validate('userId','',3, 16, /[A-Za-z0-9 ]|\s/g , 'Mã người dùng có thể bao gồm cả chữ cả số và chữ hoa')
   
- const fullName = new Validate('full_name','',3, 16, /[A-Za-z]|\s/g , 'Tên người dùng phải có thể  chữ viết hoa hoặc không')
+ const fullName = new Validate('full_name','',3, 16, /[A-Za-z ]|\s/g , 'Tên người dùng phải có thể  chữ viết hoa hoặc không')
 
  const phone = new Validate('phone','',10, 10, /[0-9]|\s/g , 'Sô điện thoại có 10 số')
 
- const address = new Validate('address','',10, 10, /[A-Za-z]|\s/g , 'Nhập lại tên địa chỉ của bạn')
+ const address = new Validate('address','',3, 100, /[A-Za-z ]|\s/g , 'Nhập lại tên địa chỉ của bạn')
 
 
  const age = new Validate('age ','',1, 3, /[0-9]|\s/g , 'Nhập lại tuổi của bạn')

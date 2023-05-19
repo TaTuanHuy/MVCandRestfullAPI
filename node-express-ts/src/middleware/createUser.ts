@@ -1,4 +1,4 @@
-import model from "../models/connectModel";
+import model from "../models/DB";
 import { Request, Response , NextFunction} from "express";
 import dotenv from 'dotenv';
 dotenv.config()
