@@ -1,4 +1,4 @@
-import configDB from "../configDB/config"
+import configDB from "../handleDB/config"
 import {Request, Response, NextFunction} from "express"
 import dotenv from "dotenv"
 dotenv.config() 
@@ -17,7 +17,7 @@ async function getAllUser(res: Response){
 async function createUser(data: any, res: Response) {
     try{
         const rows = await configDB.createUser(userTable, data)
-        res.redirect('/user')
+        res.redirect('/user')   
     }catch(error) {
         res.status(400).json(error)
     }
