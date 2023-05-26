@@ -8,7 +8,7 @@ const userTable = process.env.TABLE_USERS
 async function getAllUser(res: Response){
     try {
         const rows = await configDB.getAllUser(userTable);   
-        return res.render('home', {rows})
+        return res.status(200).render('home', {rows})
       } catch (error) {
         res.status(400).json(error)
       }
@@ -17,7 +17,7 @@ async function getAllUser(res: Response){
 async function createUser(data: any, res: Response) {
     try{
         const rows = await configDB.createUser(userTable, data)
-        res.redirect('/user')   
+        res.status(201).redirect('/user')   
     }catch(error) {
         res.status(400).json(error)
     }
@@ -35,7 +35,7 @@ async function getProfileUser (id: string, res: Response){
 async function updateUser (id: string, res: Response, data : any){
     try{
         await configDB.updateUser(userTable, id, data)
-        res.redirect('/user')
+        res.status(201).redirect('/user')
     }catch(error) {
         res.status(400).json(error)
     }
@@ -44,7 +44,7 @@ async function updateUser (id: string, res: Response, data : any){
 async function deleteUser (id: string, res: Response){
     try{
         await configDB.deleteUser(userTable, id)
-        res.redirect('/user')
+        res.status(200).redirect('/user')
     }catch(error) {
         res.status(400).json(error)
     }
